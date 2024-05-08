@@ -19,6 +19,7 @@ interface SignUpForm {
   imports: [
     DefaultMainFormLayoutComponent,
     PrimaryInputComponentComponent,
+  DefaultLoginLayoutComponent,
 
     ReactiveFormsModule
   ],
