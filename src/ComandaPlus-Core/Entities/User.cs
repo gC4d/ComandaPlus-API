@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using ComandaPlus_Core.Entities.Enums;
 
-namespace ComandaPlus_Core.Entities
+namespace ComandaPlus_Core.Entities;
+
+public class User : Person
 {
-    public class User : BaseEntity
-    {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-
-        public string Email { get; private set; }
-        public string Password { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-        public DateTime LastLogin { get; private set; }
-
-        public string FullName => $"{FirstName} {LastName}";
-    }
+    [Required]
+    [StringLength(100)]
+    [DataType(DataType.EmailAddress)]
+    public string Email { get; private set; }
+    [Required]
+    [StringLength(50)]
+    [DataType(DataType.Password)]
+    public string Password { get; private set; }
+    public UserStatus Status { get; private set; }
+    public UserRole Role { get; private set; }
+    public DateTime CreateAt { get; private set; }
+    public DateTime LastLogin { get; private set; }
 }

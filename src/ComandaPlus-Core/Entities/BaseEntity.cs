@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace ComandaPlus_Core.Entities
+namespace ComandaPlus_Core.Entities;
+
+public abstract class BaseEntity
 {
-    public abstract class BaseEntity
-    {
-        public int Id { get; private set; }
-    }
+    public Guid Id { get; protected set; }
 }
