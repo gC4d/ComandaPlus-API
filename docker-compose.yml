@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
    
     environment:
-    TZ: America/Sao_Paulo
+      TZ: America/Sao_Paulo
     volumes:
       - './appsettings.json/app/appsettings.json'   
     ports:
@@ -16,11 +16,11 @@ services:
   database:
     image: 'postgres:16-alpine'
     ports:
-      -'5432:5432'
+      - "5432:5432"
     env_file:
       - .env
     volumes:
-      pgdata: '/var/lib/postgresql/data'
+      - /db-data/:/var/lib/postgresql/data/
     networks:
       - postgres-network
       
