@@ -16,14 +16,14 @@ COPY . .
 RUN dotnet restore "./src/ComandaPlus-API/ComandaPlus-API.csproj"
 COPY . .
 
-WORKDIR "/src/ComandaPlus-API"
-RUN dotnet build "ComandaPlus-API.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
+#WORKDIR "/src/ComandaPlus-API"
+RUN dotnet build "./src/ComandaPlus-API/ComandaPlus-API.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
 
 FROM build as publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ComandaPlus-API.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
+RUN dotnet publish "./src/ComandaPlus-API/ComandaPlus-API.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
 
 FROM base as final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT [ "dotnet", "ComandaPlus-API.csproj.dll" ]
+ENTRYPOINT [ "dotnet", "ComandaPlus-API.dll" ]
