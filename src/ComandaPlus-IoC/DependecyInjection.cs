@@ -1,5 +1,3 @@
-using System;
-using ComandaPlus_Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,12 +8,13 @@ public static class DependecyInjection
 {
     public static IServiceCollection AddInfraestructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<Context>(options =>
+        services.AddDbContext<ComandaPlus_Data.Context.DatabaseContext>(options =>
             options.UseNpgsql(
                 configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly(typeof(Context)
+                b => b.MigrationsAssembly(typeof(ComandaPlus_Data.Context.DatabaseContext)
                 .Assembly.FullName)));
-
+        
+        services.AddAutoMapper(typeof(
         return services;
     }
 }

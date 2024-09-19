@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ComandaPlus_Data.Context;
 
-public class Context : DbContext
+public class DatabaseContext : DbContext
 {
-    public Context() : base() {}
-    public Context(DbContextOptions<Context> options) : base(options) {}
+    public DatabaseContext() : base() {}
+    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
 
     public DbSet<User> Users { get;}
     
     protected override void OnModelCreating(ModelBuilder builder){
         base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(typeof(Context).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }
 }

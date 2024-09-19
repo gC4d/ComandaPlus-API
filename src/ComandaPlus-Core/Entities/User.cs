@@ -1,11 +1,10 @@
 using ComandaPlus_Core.Entities.Enums;
 using ComandaPlus_Core.Validation.Exceptions;
-using ComandaPlus_Core.Utils.Extensions;
 using System.Text.RegularExpressions;
 
 namespace ComandaPlus_Core.Entities;
 
-public class User : Person
+public sealed class User : Person
 {
     public string Email { get; private set; }
     public string Password { get; private set; }

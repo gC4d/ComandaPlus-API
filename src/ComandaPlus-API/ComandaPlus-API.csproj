@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ComandaPlus-Core\ComandaPlus-Core.csproj" />
+    <ProjectReference Include="..\ComandaPlus-IoC\ComandaPlus-IoC.csproj" />
   </ItemGroup>
 
 </Project>
