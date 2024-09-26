@@ -4,11 +4,11 @@ using ComandaPlus_Core.Entities;
 
 namespace ComandaPlus_Core.Mappins;
 
-public class DTOMappingProfile : Profile 
+public class DTOMappingProfile : Profile
 {
-  public DTOMappingProfile() 
+  public DTOMappingProfile()
   {
-    CreateMap<Account, AccountDTO>().ReverseMap(); 
+    CreateMap<Account, AccountDTO>().ReverseMap();
   }
 }
 
