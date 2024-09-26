@@ -1,6 +1,6 @@
 namespace ComandaPlus_Core.Entities.Enums;
 
-public enum UserStatus
+public enum UserStatus : sbyte
 {
     Active,
     Inactive,
@@ -9,7 +9,9 @@ public enum UserStatus
     Suspended
 }
 
-public enum UserRole {
+public enum UserRole : sbyte
+{
+    Guest,
     Admin,
     User,
     Moderator
