@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComandaPlus_API.Controllers;
@@ -9,6 +10,5 @@ namespace ComandaPlus_API.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-  [HttpPost("/create")]
-  public async Task<IActionResult>([FromBody]   
+ 
 }

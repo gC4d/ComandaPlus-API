@@ -13,8 +13,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
         builder.Property(u => u.Email).HasMaxLength(100).IsRequired();
         builder.Property(u => u.Password).HasMaxLength(50).IsRequired();
-        builder.Property(u => u.Status).HasConversion<int>().IsRequired();
-        builder.Property(u => u.Role).HasConversion<int>().IsRequired();
+        builder.Property(u => u.Status).HasConversion<sbyte>().IsRequired();
+        builder.Property(u => u.Role).HasConversion<sbyte>().IsRequired();
         builder.Property(u => u.CreateAt).HasColumnType("datetime").IsRequired();
         builder.Property(u => u.LastLogin).HasColumnType("datetime");
     }

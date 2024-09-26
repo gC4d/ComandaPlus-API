@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces/" />
+    <Folder Include="Interfaces/Repositories/" />
+  </ItemGroup>
+
 </Project>
