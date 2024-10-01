@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-using System.Data;
 using ComandaPlus_Core.Entities;
 using ComandaPlus_Core.Interfaces.Repositories;
 using ComandaPlus_Data.Context;
@@ -28,7 +26,7 @@ namespace ComandaPlus_Data.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int? id)
+        public async Task<T> GetByIdAsync(Guid? id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -40,7 +38,7 @@ namespace ComandaPlus_Data.Repositories
             return entity;
         }
 
-        public async Task<T> RemoveByIdAsync(int id)
+        public async Task<T> RemoveByIdAsync(Guid? id)
         {
             T entity = await GetByIdAsync(id);
             if(entity != null)
