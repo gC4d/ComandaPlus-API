@@ -1,4 +1,5 @@
 using ComandaPlus_Core.Dtos;
+using ComandaPlus_Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,20 @@ namespace ComandaPlus_API.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    
-    [HttpPost("/create")]
+    private readonly IAccountService _accountService;
+    public AccountController(IAccountService accountService)
+    {
+        _accountService = accountService;
+    }
+
+    [HttpPost("/add")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> Create([FromBody] AccountDTO account){
+    public async Task<IActionResult> Create([FromBody] AccountDTO accountDTO){
+        if(!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        await _accountService.Add(accountDTO);
+
         return Ok();
     }
 }
