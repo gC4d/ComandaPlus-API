@@ -1,4 +1,3 @@
-using System;
 using ComandaPlus_Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -9,6 +8,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.ToTable("Users");
+
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
         builder.Property(u => u.Email).HasMaxLength(100).IsRequired();

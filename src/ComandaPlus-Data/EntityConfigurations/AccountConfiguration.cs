@@ -8,6 +8,8 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
+        builder.ToTable("Accounts");
+
         builder.HasKey(k => k.Id);
         builder.Property(p => p.Title).HasMaxLength(50).IsRequired();
         builder.Property(p => p.Logo).HasMaxLength(250);
