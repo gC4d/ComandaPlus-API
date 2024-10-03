@@ -26,6 +26,6 @@ public class AccountController : ControllerBase
 
         await _accountService.Add(accountDTO);
 
-        return Ok();
+        return Ok(accountDTO);
     }
 }
