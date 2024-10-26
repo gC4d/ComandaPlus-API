@@ -1,4 +1,4 @@
-using ComandaPlus_Core.Dtos;
+using ComandaPlus_API.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComandaPlus_API.Controllers

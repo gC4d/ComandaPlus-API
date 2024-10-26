@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ComandaPlus-Core\ComandaPlus-Core.csproj" />
+    <ProjectReference Include="..\..\src\ComandaPlus-API\ComandaPlus-API.csproj" />
   </ItemGroup>
 
 </Project>

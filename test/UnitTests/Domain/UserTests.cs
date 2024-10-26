@@ -1,6 +1,6 @@
-using ComandaPlus_Core.Entities;
-using ComandaPlus_Core.Entities.Enums;
-using ComandaPlus_Core.Validation.Exceptions;
+using ComandaPlus_API.Entities;
+using ComandaPlus_API.Entities.Enums;
+using ComandaPlus_API.Validation.Exceptions;
 using FluentAssertions;
 
 namespace UnitTests.Domain

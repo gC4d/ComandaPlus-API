@@ -366,4 +366,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Database files
-.db-data/
+./db-data/

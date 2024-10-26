@@ -1,5 +1,5 @@
-using ComandaPlus_Core.Dtos;
-using ComandaPlus_Core.Interfaces.Services;
+using ComandaPlus_API.Dtos;
+using ComandaPlus_API.Interfaces.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
