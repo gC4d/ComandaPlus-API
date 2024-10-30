@@ -3,8 +3,8 @@ using ComandaPlus_API.Mappins;
 using ComandaPlus_API.Context;
 using ComandaPlus_API.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using ComandaPlus_API.Interfaces.Services;
+using ComandaPlus_API.Services;
 
 namespace ComandaPlus_IoC;
 
@@ -22,6 +22,8 @@ public static class DependecyInjection
         services.AddAutoMapper(typeof(DTOMappingProfile));
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ILicenseService, LicenseService>();
+        services.AddScoped<UserRepository>();
 
         return services;
     }
