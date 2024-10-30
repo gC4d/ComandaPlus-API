@@ -10,8 +10,7 @@ public sealed class Account : BaseEntity
   public string? Logo { get; private set; }
   public string Identifier { get; private set; }
   // @ToDo: I will need define some way to identify where are the account from 
-
-
+  
   public Guid OwnerId { get;  set; } 
   public User Owner { get;  set; }
   public Guid LicenseId { get;  set; }

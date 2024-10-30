@@ -13,10 +13,10 @@ public class UserDTO
     [MaxLength(50)]
     [DisplayName("Name")]
     public string Name { get; set;}
-    public string Email { get; private set; }
-    public string Password { get; private set; }
-    public UserStatus Status { get; private set; }
-    public UserRole Role { get; private set; }
-    public DateTime CreateAt { get; private set; }
-    public DateTime LastLogin { get; private set; }
+    public string Email { get;  set; }
+    public string Password { get;  set; }
+    public UserStatus Status { get;  set; }
+    public UserRole Role { get;  set; }
+    public DateTime CreateAt { get;  set; }
+    public DateTime LastLogin { get;  set; }
 }
