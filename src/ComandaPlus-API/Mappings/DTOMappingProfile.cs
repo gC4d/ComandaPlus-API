@@ -9,6 +9,7 @@ public class DTOMappingProfile : Profile
   public DTOMappingProfile()
   {
     CreateMap<Account, AccountDTO>().ReverseMap();
+    CreateMap<User, UserDTO>().ReverseMap();
   }
 }
 
