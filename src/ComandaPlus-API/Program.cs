@@ -1,6 +1,7 @@
 using System.Text;
 using Asp.Versioning;
 using ComandaPlus_IoC;
+using EmailService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -45,6 +46,12 @@ public class Program
             options.DefaultApiVersion = new ApiVersion(1, 0);
             options.ReportApiVersions = true;
         });
+
+        builder.Services.Configure<EmailConfiguration>(
+            configuration
+            .GetSection("EmailConfiguration")
+        );
+
 
         var app = builder.Build();
 

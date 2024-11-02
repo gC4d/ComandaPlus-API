@@ -5,6 +5,7 @@ using ComandaPlus_API.Repositories;
 using Microsoft.EntityFrameworkCore;
 using ComandaPlus_API.Interfaces.Services;
 using ComandaPlus_API.Services;
+using EmailService;
 
 namespace ComandaPlus_IoC;
 
@@ -18,7 +19,7 @@ public static class DependecyInjection
                 b => b.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName)
             )
         );
-        
+
         services.AddAutoMapper(typeof(DTOMappingProfile));
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
