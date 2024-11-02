@@ -1,9 +1,9 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using ComandaPlus_API.Entities;
+using ComandaPlus_API.Domain.Entities;
 
-namespace ComandaPlus_API.Dtos;
+namespace ComandaPlus_API.Application.Dtos;
 
 public class AccountDTO 
 {
@@ -35,6 +35,6 @@ public class AccountDTO
   public Guid LicenseId { get; set; }
 
   [JsonIgnore]
-  public License License { get; set; }
+  public Domain.Entities.License License { get; set; }
 
 }

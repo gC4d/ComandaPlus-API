@@ -1,8 +1,7 @@
 using Asp.Versioning;
-using ComandaPlus_API.Dtos;
+using ComandaPlus_API.Application.Dtos;
 using ComandaPlus_API.Requests.User;
 using ComandaPlus_API.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComandaPlus_API.Controllers.V1

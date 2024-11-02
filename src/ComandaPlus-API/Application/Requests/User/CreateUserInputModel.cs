@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using ComandaPlus_API.Dtos;
+using ComandaPlus_API.Application.Dtos;
+using ComandaPlus_API.Domain.Entities.Enums;
 
 namespace ComandaPlus_API.Requests.User;
 
@@ -20,8 +21,8 @@ public readonly record struct CreateUserInputModel
             Email = request.Email,
             Password = request.Password,
             CreateAt = DateTime.Now,
-            Role = Entities.Enums.UserRole.User,
-            Status = Entities.Enums.UserStatus.Active,
+            Role = UserRole.User,
+            Status = UserStatus.Active,
         };
     }
 }

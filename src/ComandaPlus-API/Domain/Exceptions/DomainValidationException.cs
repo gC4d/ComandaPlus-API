@@ -1,6 +1,6 @@
 using System;
 
-namespace ComandaPlus_API.Validation.Exceptions;
+namespace ComandaPlus_API.Domain.Exceptions;
 
 public class DomainValidationException : Exception
 {

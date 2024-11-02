@@ -1,4 +1,7 @@
-namespace ComandaPlus_API.Entities.Enums;
+
+using ComandaPlus_API.Domain.Entities.Enums;
+
+namespace ComandaPlus_API.Domain.Entities;
 
 public class License : BaseEntity 
 {

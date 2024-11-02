@@ -1,6 +1,6 @@
-using ComandaPlus_API.Validation.Exceptions;
+using ComandaPlus_API.Domain.Exceptions;
 
-namespace ComandaPlus_API.Entities;
+namespace ComandaPlus_API.Domain.Entities;
 
 public abstract class BaseEntity
 {

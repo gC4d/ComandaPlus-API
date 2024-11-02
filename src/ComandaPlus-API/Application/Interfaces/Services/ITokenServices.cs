@@ -1,5 +1,5 @@
 using System;
-using ComandaPlus_API.Entities;
+using ComandaPlus_API.Domain.Entities;
 
 namespace ComandaPlus_API.Services.Interfaces;
 

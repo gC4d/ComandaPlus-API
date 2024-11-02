@@ -1,4 +1,4 @@
-using ComandaPlus_API.Entities;
+using ComandaPlus_API.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,4 +1,4 @@
-namespace ComandaPlus_API.Entities.Enums;
+namespace ComandaPlus_API.Domain.Entities.Enums;
 
 public enum LicensePaymentPlan 
 {

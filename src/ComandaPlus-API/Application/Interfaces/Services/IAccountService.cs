@@ -1,4 +1,4 @@
-using ComandaPlus_API.Dtos;
+using ComandaPlus_API.Application.Dtos;
 
 namespace ComandaPlus_API.Interfaces.Services;
 

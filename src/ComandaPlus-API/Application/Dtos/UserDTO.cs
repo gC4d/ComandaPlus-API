@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using ComandaPlus_API.Entities.Enums;
+using ComandaPlus_API.Domain.Entities.Enums;
 
-namespace ComandaPlus_API.Dtos;
+namespace ComandaPlus_API.Application.Dtos;
 
 public class UserDTO 
 {

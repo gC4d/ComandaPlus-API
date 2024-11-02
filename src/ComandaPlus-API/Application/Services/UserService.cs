@@ -1,7 +1,7 @@
 using System;
 using AutoMapper;
-using ComandaPlus_API.Dtos;
-using ComandaPlus_API.Entities;
+using ComandaPlus_API.Application.Dtos;
+using ComandaPlus_API.Domain.Entities;
 using ComandaPlus_API.Interfaces.Repositories;
 using ComandaPlus_API.Interfaces.Services;
 using ComandaPlus_API.Requests.User;

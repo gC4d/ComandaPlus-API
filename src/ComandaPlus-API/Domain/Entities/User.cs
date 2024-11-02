@@ -1,8 +1,8 @@
-using ComandaPlus_API.Entities.Enums;
-using ComandaPlus_API.Validation.Exceptions;
+using ComandaPlus_API.Domain.Entities.Enums;
+using ComandaPlus_API.Domain.Exceptions;
 using System.Text.RegularExpressions;
 
-namespace ComandaPlus_API.Entities;
+namespace ComandaPlus_API.Domain.Entities;
 
 public sealed class User : BaseEntity
 {
