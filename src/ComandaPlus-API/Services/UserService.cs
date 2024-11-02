@@ -13,14 +13,14 @@ public class UserService(IUserRepository userRepository, IMapper mapper)
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IMapper _mapper = mapper;
 
-    public async Task<UserDTO> Create(CreateUserRequest request)
+    public async Task<UserDTO> Create(CreateUserInputModel request)
     {
         if (request == null)
             throw new ArgumentNullException(nameof(request));
 
         try
         {
-            User userEntity = _mapper.Map<User>(request);
+            User userEntity = _mapper.Map<User>((UserDTO)request);
             
             var userCreated = await _userRepository.CreateAsync(userEntity);
 
