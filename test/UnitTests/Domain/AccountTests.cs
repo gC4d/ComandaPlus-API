@@ -1,5 +1,5 @@
-using ComandaPlus_API.Entities;
-using ComandaPlus_API.Validation.Exceptions;
+using ComandaPlus_API.Domain.Entities;
+using ComandaPlus_API.Domain.Exceptions;
 using FluentAssertions;
 
 namespace UnitTests.Domain;
