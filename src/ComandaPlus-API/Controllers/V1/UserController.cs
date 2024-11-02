@@ -1,14 +1,17 @@
+using Asp.Versioning;
 using ComandaPlus_API.Dtos;
 using ComandaPlus_API.Requests.User;
 using ComandaPlus_API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ComandaPlus_API.Controllers
+namespace ComandaPlus_API.Controllers.V1
 {
     [Route("api/v1/[controller]")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "v1")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class UserController : ControllerBase
     {

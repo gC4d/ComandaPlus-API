@@ -1,4 +1,5 @@
 using System.Text;
+using Asp.Versioning;
 using ComandaPlus_IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -36,6 +37,13 @@ public class Program
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero
             };
+        });
+
+        builder.Services.AddApiVersioning(options =>
+        {
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.DefaultApiVersion = new ApiVersion(1, 0);
+            options.ReportApiVersions = true;
         });
 
         var app = builder.Build();
