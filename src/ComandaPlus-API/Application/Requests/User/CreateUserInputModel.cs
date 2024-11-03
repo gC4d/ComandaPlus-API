@@ -12,14 +12,11 @@ public readonly record struct CreateUserInputModel
     [Required]
     [EmailAddress]
     public string Email { get; init;}
-    [Required]
-    public string Password { get; init;}
 
     public static implicit operator UserDTO(CreateUserInputModel request){
         return new UserDTO() { 
             Name = request.Name,
             Email = request.Email,
-            Password = request.Password,
             CreateAt = DateTime.Now,
             Role = UserRole.User,
             Status = UserStatus.Active,
