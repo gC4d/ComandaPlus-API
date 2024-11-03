@@ -18,6 +18,7 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddMemoryCache();
 
         builder.Services.AddInfraestructure(configuration);
 
@@ -39,7 +40,7 @@ public class Program
                 ClockSkew = TimeSpan.Zero
             };
         });
-
+    
         builder.Services.AddApiVersioning(options =>
         {
             options.AssumeDefaultVersionWhenUnspecified = true;
@@ -51,7 +52,6 @@ public class Program
             configuration
             .GetSection("EmailConfiguration")
         );
-
 
         var app = builder.Build();
 
