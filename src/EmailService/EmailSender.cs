@@ -5,14 +5,22 @@ using MimeKit;
 
 namespace EmailService;
 
+/// <summary>
+/// A service for sending emails using SMTP with synchronous and asynchronous options.
+/// </summary>
 public class EmailSender : IEmailSender
 {
     private readonly EmailConfiguration _emailConfig;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EmailSender"/> class with the specified email configuration.
+    /// </summary>
+    /// <param name="emailConfig">The email configuration settings.</param>
     public EmailSender(IOptions<EmailConfiguration> emailConfig)
     {
         _emailConfig = emailConfig.Value;
     }
+
     public void SendMail(Message message)
     {
         var emailMessage = CreateEmailMessage(message);
@@ -27,6 +35,10 @@ public class EmailSender : IEmailSender
         await SendAsync(emailMessage);
     }
 
+    /// <summary>
+    /// Sends a email message synchronously using SMTP.
+    /// </summary>
+    /// <param name="emailMessage">The MIME email message to be sent.</param>
     private void Send(MimeMessage emailMessage)
     {
         using (var client = new SmtpClient())
@@ -48,6 +60,12 @@ public class EmailSender : IEmailSender
             }
         }
     }
+
+    /// <summary>
+    /// Sends a email message asynchronously using SMTP.
+    /// </summary>
+    /// <param name="mailMessage">The MIME email message to be sent.</param>
+    /// <returns>A task representing the asynchronous send operation.</returns>
     private async Task SendAsync(MimeMessage mailMessage)
     {
         using (var client = new SmtpClient())
@@ -73,6 +91,11 @@ public class EmailSender : IEmailSender
         }
     }
 
+    /// <summary>
+    /// Creates a <see cref="MimeMessage"/> from the provided <see cref="Message"/>.
+    /// </summary>
+    /// <param name="message">The message details including recipients, subject, and content.</param>
+    /// <returns>A <see cref="MimeMessage"/> constructed from the message.</returns>
     private MimeMessage CreateEmailMessage(Message message)
     {
         var emailMessage = new MimeMessage();
