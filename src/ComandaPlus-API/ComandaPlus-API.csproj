@@ -32,4 +32,9 @@
     <ProjectReference Include="..\EmailService\EmailService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Application\Services\VerificationService.cs" />
+    <Compile Remove="Application\Cache\Cache.cs" />
+  </ItemGroup>
+
 </Project>
