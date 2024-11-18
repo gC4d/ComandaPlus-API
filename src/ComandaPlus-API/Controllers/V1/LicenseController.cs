@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ComandaPlus_API.Interfaces.Services;
+using ComandaPlus_API.Services;
 using Asp.Versioning;
 
 namespace ComandaPlus_API.Controllers.V1
@@ -12,6 +12,6 @@ namespace ComandaPlus_API.Controllers.V1
     [ApiController]
     public class LicenseController : ControllerBase
     {
-        private readonly ILicenseService licenseService; 
+        private readonly LicenseService licenseService; 
     }
 }

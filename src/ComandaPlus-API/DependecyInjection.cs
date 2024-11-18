@@ -1,9 +1,7 @@
-using ComandaPlus_API.Interfaces.Repositories;
 using ComandaPlus_API.Mappins;
 using ComandaPlus_API.Context;
-using ComandaPlus_API.Repositories;
 using Microsoft.EntityFrameworkCore;
-using ComandaPlus_API.Interfaces.Services;
+using ComandaPlus_API.Services;
 using ComandaPlus_API.Services;
 using EmailService;
 using ComandaPlus_API.Application.Interfaces;
@@ -23,12 +21,10 @@ public static class DependecyInjection
         );
 
         services.AddAutoMapper(typeof(DTOMappingProfile));
-        services.AddScoped<IAccountRepository, AccountRepository>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<ILicenseService, LicenseService>();
+        services.AddScoped<LicenseService>();
         services.AddScoped<IEmailSender, EmailSender>();
         services.AddScoped<ICacheService, CacheService>();
-        services.AddScoped<IUserService,UserService>();
+        services.AddScoped<UserService>();
         
 
         return services;

@@ -2,18 +2,15 @@ using AutoMapper;
 using ComandaPlus_API.Application.Dtos;
 using ComandaPlus_API.Application.Interfaces;
 using ComandaPlus_API.Domain.Entities;
-using ComandaPlus_API.Interfaces.Repositories;
 using EmailService;
 
 namespace ComandaPlus_API.Services;
 
 public class UserService(
-    IUserRepository userRepository, 
     IMapper mapper, 
     IEmailSender emailSender,
     ICacheService cache) 
 {  
-    private readonly IUserRepository _userRepository = userRepository;
     private readonly IEmailSender _emailSender = emailSender;
     private readonly IMapper _mapper = mapper;
     private readonly ICacheService _cache = cache;
@@ -28,7 +25,7 @@ public class UserService(
         {
             User userEntity = _mapper.Map<User>(request);
             
-            var userCreated = await _userRepository.CreateAsync(userEntity);
+            var userCreated = new User();
 
             var user = _mapper.Map<UserDTO>(userCreated);
 

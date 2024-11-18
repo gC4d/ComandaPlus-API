@@ -1,7 +1,7 @@
 using Asp.Versioning;
 using ComandaPlus_API.Application.Dtos;
 using ComandaPlus_API.Dtos;
-using ComandaPlus_API.Interfaces.Services;
+using ComandaPlus_API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComandaPlus_API.Controllers.V1;
@@ -15,8 +15,8 @@ namespace ComandaPlus_API.Controllers.V1;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    private readonly IAccountService _accountService;
-    public AccountController(IAccountService accountService)
+    private readonly AccountService _accountService;
+    public AccountController(AccountService accountService)
     {
         _accountService = accountService;
     }
