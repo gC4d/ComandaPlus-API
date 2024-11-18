@@ -1,10 +1,9 @@
 using System;
 using ComandaPlus_API.Dtos;
-using ComandaPlus_API.Interfaces.Services;
 
 namespace ComandaPlus_API.Services;
 
-public class LicenseService : ILicenseService
+public class LicenseService 
 {
     public Task Add(LicenseDTO licenseDTO)
     {

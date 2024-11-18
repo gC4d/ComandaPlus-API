@@ -1,10 +1,9 @@
 using AutoMapper;
-using ComandaPlus_API.Application.Cache;
 using ComandaPlus_API.Application.Dtos;
+using ComandaPlus_API.Application.Interfaces;
 using ComandaPlus_API.Domain.Entities;
 using ComandaPlus_API.Interfaces.Repositories;
 using EmailService;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace ComandaPlus_API.Services;
 
@@ -12,15 +11,15 @@ public class UserService(
     IUserRepository userRepository, 
     IMapper mapper, 
     IEmailSender emailSender,
-    IMemoryCache cache)
+    ICacheService cache) 
 {  
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IEmailSender _emailSender = emailSender;
     private readonly IMapper _mapper = mapper;
-    private readonly IMemoryCache _cache = cache;
+    private readonly ICacheService _cache = cache;
 
 
-    public async Task<UserDTO> Create(UserDTO request)
+    public async Task<UserDTO> CreateAsync(UserDTO request)
     {
         if (request == null)
             throw new ArgumentNullException(nameof(request));
@@ -41,38 +40,82 @@ public class UserService(
         }
     }
 
-
-
-    public void AddToCache<T>(T userCache) where T : UserCache
+    private string GenerateVerificationCode()
     {
-        if (userCache == null)
-            throw new ArgumentNullException(nameof(userCache), "User cache cannot be null.");
+        return new Random().Next(100000, 999999).ToString();
+    }
+
+    public async Task CacheUserDataAsync(UserDTO userDTO) 
+    {
+        if (userDTO == null)
+            throw new ArgumentNullException(nameof(userDTO));
         
-        _cache.Set(
-            $"pending_user:{userCache.user.Email}", 
-            userCache, 
+        await _cache.SetAsync(
+            $"pending_user:{userDTO.Email}", 
+            userDTO, 
             TimeSpan.FromMinutes(15)
         );
     }
 
-    public VerifyUserCache GetPendingVerifyUser(string email)
+    public async Task SendVerificationCodeAsync(string email)
     {
-        if(string.IsNullOrWhiteSpace(email))
-            throw new ArgumentNullException(nameof(email), "Email cannot be null when tries to get pending user");
+        if (email == null)
+            throw new ArgumentNullException(nameof(email), "Email cannot be null");
 
-        _cache.TryGetValue($"pending_user:{email}", out VerifyUserCache pendingUser);
+        var verificationCode = GenerateVerificationCode();
 
-        return pendingUser;
+        await _cache.SetAsync($"verification:{email}", verificationCode, TimeSpan.FromMinutes(15));
     }
+
     
-    private async Task VerifyEmail(EmailUser emailUser, string subject, string content)
+    
+    private async Task VerifyEmail(EmailUser emailUser, string verificationCode)
     {
+
+        var templatePath = Path.Combine(
+            "../../", "resources", "VerificationEmailTemplate.html");
+        var content = await File.ReadAllTextAsync(templatePath);
+
+        content = content.Replace("{{UserName}}", emailUser.UserName)
+                             .Replace("{{VerificationCode}}", verificationCode);
+
+
         var message = new Message(
             new List<EmailUser>(){ emailUser },
-            subject,
+            "Email Verification",
             content,
             MimeKit.Text.TextFormat.Html
         );
         await _emailSender.SendMailAsync(message);
+    }
+
+    public Task<IEnumerable<UserDTO>> GetAllsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<UserDTO> GetAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<UserDTO>> GetUsersByAcount(Guid Id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<UserDTO> UpdateAsync(UserDTO userDTO)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task RemoveAsync(UserDTO userDTO)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task RemoveByIdAsync(Guid id)
+    {
+        throw new NotImplementedException();
     }
 }

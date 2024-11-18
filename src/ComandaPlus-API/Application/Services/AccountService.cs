@@ -2,11 +2,10 @@ using AutoMapper;
 using ComandaPlus_API.Application.Dtos;
 using ComandaPlus_API.Domain.Entities;
 using ComandaPlus_API.Interfaces.Repositories;
-using ComandaPlus_API.Interfaces.Services;
 
 namespace ComandaPlus_API.Services;
 
-public class AccountService : IAccountService
+public class AccountService
 {
     private readonly IAccountRepository _accountRepository;
     private readonly IMapper _mapper;

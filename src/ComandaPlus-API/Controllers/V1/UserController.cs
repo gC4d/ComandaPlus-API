@@ -2,6 +2,7 @@ using Asp.Versioning;
 using ComandaPlus_API.Application.Dtos;
 using ComandaPlus_API.Requests.User;
 using ComandaPlus_API.Services;
+using EmailService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComandaPlus_API.Controllers.V1
@@ -30,11 +31,11 @@ namespace ComandaPlus_API.Controllers.V1
 
             try
             {
-                var userDto = await _userService.Create(request);
-                if (userDto == null)
-                    return StatusCode(500, "An error occurred while creating the user.");
+                await _userService.CacheUserDataAsync(request);
 
-                return CreatedAtAction(nameof(GetById), new { id = userDto.Id }, userDto);
+                await _userService.SendVerificationCodeAsync(request.Email);
+
+                return Ok(new { Message = "Verification code was sent to your email." });
             }
             catch (ApplicationException ex)
             {

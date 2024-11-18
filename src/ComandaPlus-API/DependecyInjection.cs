@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using ComandaPlus_API.Interfaces.Services;
 using ComandaPlus_API.Services;
 using EmailService;
+using ComandaPlus_API.Application.Interfaces;
+using ComandaPlus_API.Application.Services;
 
 namespace ComandaPlus_IoC;
 
@@ -25,7 +27,8 @@ public static class DependecyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ILicenseService, LicenseService>();
         services.AddScoped<IEmailSender, EmailSender>();
-        services.AddScoped<UserService>();
+        services.AddScoped<ICacheService, CacheService>();
+        services.AddScoped<IUserService,UserService>();
         
 
         return services;
